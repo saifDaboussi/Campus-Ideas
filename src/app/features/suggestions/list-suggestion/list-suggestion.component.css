@@ -1,0 +1,168 @@
+/* TITRE */
+.title {
+  text-align: center;
+  margin: 30px 0 20px;
+  font-size: 28px;
+  color: #1e293b;
+  font-weight: bold;
+}
+
+/* SEARCH BAR */
+.search {
+  display: block;
+  width: 60%;
+  margin: 0 auto 30px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.search:focus {
+  border-color: #38bdf8;
+}
+
+/* CONTAINER */
+.suggestions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+  padding: 0 40px;
+}
+
+/* CARD */
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* CARD HEADER */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #0f172a;
+}
+
+/* STATUS BADGE */
+.status {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: bold;
+  color: white;
+}
+
+.status.acceptee {
+  background-color: #22c55e;
+}
+
+.status.refusee {
+  background-color: #ef4444;
+}
+
+.status.en_attente {
+  background-color: #f59e0b;
+}
+
+/* DESCRIPTION */
+.description {
+  margin: 15px 0;
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.5;
+}
+
+/* INFO */
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  color: #334155;
+}
+
+/* ACTIONS */
+.actions {
+  margin-top: 18px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.actions button {
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+/* LIKE */
+button.like {
+  background-color: #e0f2fe;
+  color: #0369a1;
+}
+
+button.like:hover {
+  background-color: #bae6fd;
+}
+
+/* FAVORIS */
+button.fav {
+  background-color: #fef9c3;
+  color: #92400e;
+}
+
+button.fav:hover {
+  background-color: #fde68a;
+}
+
+/* DETAILS */
+button.details {
+  background-color: #38bdf8;
+  color: #0f172a;
+}
+
+button.details:hover {
+  background-color: #0ea5e9;
+  color: white;
+}
+
+/* FAVORITES SECTION */
+.fav-title {
+  margin: 40px 40px 10px;
+  font-size: 20px;
+  color: #1e293b;
+}
+
+.fav-list {
+  margin: 0 40px 40px;
+  padding: 0;
+  list-style: none;
+}
+
+.fav-list li {
+  background: #f8fafc;
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  font-size: 14px;
+}

@@ -1,12 +1,16 @@
-import { Component } from '@angular/core';
-import { Suggestion } from '../../models/suggestion';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Suggestion } from '../../../../app/models/suggestion';
 
 @Component({
-  selector: 'app-list-suggestion',
-  templateUrl: './list-suggestion.component.html',
-  styleUrl: './list-suggestion.component.css'
+  selector: 'app-suggestion-details',
+  templateUrl: './suggestion-details.component.html',
+  styleUrls: ['./suggestion-details.component.css']
 })
-export class ListsuggestionComponent {
+export class SuggestionDetailsComponent implements OnInit {
+
+  suggestion!: Suggestion;
+
   suggestions: Suggestion[] = [
     {
       id: 1,
@@ -45,23 +49,11 @@ export class ListsuggestionComponent {
       nbLikes: 0
     }
   ];
-searchTerm: any;
-  favorites: Suggestion[] = [];
-searchText: string = '';
 
- likeSuggestion(s: Suggestion) {
-    s.nbLikes++;
-  }
+  constructor(private route: ActivatedRoute) {}
 
-  addToFavorites(s: Suggestion) {
-    if (!this.favorites.includes(s)) {
-      this.favorites.push(s);
-    }
-  }
-  filteredSuggestions() {
-    return this.suggestions.filter(s =>
-      s.title.toLowerCase().includes(this.searchText.toLowerCase()) ||
-      s.category.toLowerCase().includes(this.searchText.toLowerCase())
-    );
+  ngOnInit(): void {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.suggestion = this.suggestions.find(s => s.id === id)!;
   }
 }

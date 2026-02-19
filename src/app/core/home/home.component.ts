@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-    v2="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Angular_gradient_logo.png/250px-Angular_gradient_logo.png"
+  constructor(private router: Router) {}
+
+  goToSuggestions() {
+    this.router.navigate(['/suggestions']);
+  }
+
 }

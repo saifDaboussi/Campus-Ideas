@@ -1,0 +1,106 @@
+.details-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.details-card {
+  width: 700px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.details-header h2 {
+  margin: 0;
+  color: #2c3e50;
+}
+
+.badge {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+}
+
+.badge.acceptee {
+  background-color: #27ae60;
+}
+
+.badge.refusee {
+  background-color: #e74c3c;
+}
+
+.badge.en_attente {
+  background-color: #f39c12;
+}
+
+.description {
+  margin: 20px 0;
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.details-info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.info-item {
+  text-align: center;
+}
+
+.label {
+  display: block;
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 5px;
+}
+
+.value {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.actions {
+  margin-top: 30px;
+  text-align: right;
+}
+
+.back-btn {
+  text-decoration: none;
+  padding: 10px 18px;
+  background-color: #3498db;
+  color: white;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+  background-color: #217dbb;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

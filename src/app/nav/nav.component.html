@@ -1,3 +1,19 @@
-<header>
-  <h1>Gestion des Suggestions</h1>
-</header>
+<nav class="navbar">
+  <div class="logo">
+    Campus<span>Ideas</span>
+  </div>
+
+  <ul class="nav-links">
+    <li>
+      <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        Home
+      </a>
+    </li>
+
+    <li>
+      <a routerLink="/suggestions" routerLinkActive="active">
+        Suggestions
+      </a>
+    </li>
+  </ul>
+</nav>
