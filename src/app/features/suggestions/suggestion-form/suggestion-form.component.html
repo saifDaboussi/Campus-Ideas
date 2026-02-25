@@ -1,0 +1,44 @@
+<div class="form-container">
+  <h2>Ajouter une nouvelle suggestion</h2>
+
+  <form [formGroup]="suggestionForm" (ngSubmit)="onSubmit()">
+
+    <!-- Title -->
+    <label for="title">Titre :</label>
+    <input id="title" type="text" formControlName="title" />
+    <div class="error" *ngIf="title.invalid && (title.dirty || title.touched)">
+      <small *ngIf="title.errors?.['required']">Le titre est obligatoire.</small>
+      <small *ngIf="title.errors?.['minlength']">Le titre doit contenir au moins 5 caractères.</small>
+      <small *ngIf="title.errors?.['pattern']">Le titre doit commencer par une majuscule et ne contenir que des lettres.</small>
+    </div>
+
+    <!-- Description -->
+    <label for="description">Description :</label>
+    <textarea id="description" formControlName="description"></textarea>
+    <div class="error" *ngIf="description.invalid && (description.dirty || description.touched)">
+      <small *ngIf="description.errors?.['required']">La description est obligatoire.</small>
+      <small *ngIf="description.errors?.['minlength']">La description doit contenir au moins 30 caractères.</small>
+    </div>
+
+    <!-- Category -->
+    <label for="category">Catégorie :</label>
+    <select id="category" formControlName="category">
+      <option value="">Sélectionner une catégorie</option>
+      <option *ngFor="let c of categories" [value]="c">{{ c }}</option>
+    </select>
+    <div class="error" *ngIf="category.invalid && (category.dirty || category.touched)">
+      <small>La catégorie est obligatoire.</small>
+    </div>
+
+    <!-- Date & Status (readonly) -->
+    <label>Date :</label>
+    <input type="text" [value]="currentDate" readonly />
+
+    <label>Status :</label>
+    <input type="text" value="en attente" readonly />
+
+    <!-- Submit -->
+    <button type="submit" [disabled]="suggestionForm.invalid">Soumettre</button>
+
+  </form>
+</div>
