@@ -9,6 +9,7 @@ import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule, DatePipe } from '@angular/common';
 import { NotfoundComponent } from './core/notfound/notfound.component';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,8 +25,8 @@ import { NotfoundComponent } from './core/notfound/notfound.component';
     FormsModule
   ],
   providers: [
-    provideClientHydration()
-  ],
+    provideClientHydration(),
+provideHttpClient(withFetch())  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

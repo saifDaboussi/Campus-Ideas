@@ -31,6 +31,7 @@
       <button class="like" (click)="likeSuggestion(s)">👍 Like</button>
       <button class="fav" (click)="addToFavorites(s)">⭐ Favoris</button>
       <button class="details" [routerLink]="['/suggestions', s.id]">📄 Details</button>
+      <button (click)="deleteSuggestion(s.id)">❌ Supprimer</button>
     </div>
   </div>
 </div>

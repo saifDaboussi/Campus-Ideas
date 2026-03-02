@@ -1,5 +1,7 @@
 <div class="form-container">
-  <h2>Ajouter une nouvelle suggestion</h2>
+
+  <h2 *ngIf="!isEditMode">Ajouter une nouvelle suggestion</h2>
+  <h2 *ngIf="isEditMode">Modifier la suggestion</h2>
 
   <form [formGroup]="suggestionForm" (ngSubmit)="onSubmit()">
 
@@ -30,15 +32,22 @@
       <small>La catégorie est obligatoire.</small>
     </div>
 
-    <!-- Date & Status (readonly) -->
-    <label>Date :</label>
-    <input type="text" [value]="currentDate" readonly />
+    <!-- Date (readonly) -->
+    <div *ngIf="isEditMode">
+      <label>Date :</label>
+      <input type="text" [value]="suggestionForm.value.date | date:'dd/MM/yyyy'" readonly />
+    </div>
 
-    <label>Status :</label>
-    <input type="text" value="en attente" readonly />
+    <!-- Status (readonly) -->
+    <div *ngIf="isEditMode">
+      <label>Status :</label>
+      <input type="text" [value]="suggestionForm.value.status" readonly />
+    </div>
 
-    <!-- Submit -->
-    <button type="submit" [disabled]="suggestionForm.invalid">Soumettre</button>
+    <!-- Submit button -->
+    <button type="submit" [disabled]="suggestionForm.invalid">
+      {{ isEditMode ? 'Mettre à jour' : 'Soumettre' }}
+    </button>
 
   </form>
 </div>

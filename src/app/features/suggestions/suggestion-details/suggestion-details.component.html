@@ -33,6 +33,9 @@
       <a routerLink="/suggestions" class="back-btn">
         ⬅ Back to list
       </a>
+       <button class="update-btn" [routerLink]="['/suggestions/edit', suggestion.id]">
+    ✏️ Update
+  </button>
     </div>
 
   </div>

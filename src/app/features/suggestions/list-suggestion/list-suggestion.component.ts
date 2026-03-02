@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Suggestion } from '../../../models/suggestion';
+import { SuggestionService } from '../../../core/Services/suggestion.service';
 
 @Component({
   selector: 'app-list-suggestion',
@@ -8,51 +9,28 @@ import { Suggestion } from '../../../models/suggestion';
 })
 export class ListsuggestionComponent {
 
-  suggestions: Suggestion[] = [
-    {
-      id: 1,
-      title: 'Organiser une journée team building',
-      description: 'Suggestion pour organiser une journée de team building.',
-      category: 'Événements',
-      date: new Date('2025-01-20'),
-      status: 'acceptee',
-      nbLikes: 10
-    },
-    {
-      id: 2,
-      title: 'Améliorer le système de réservation',
-      description: 'Améliorer la gestion des réservations en ligne.',
-      category: 'Technologie',
-      date: new Date('2025-01-15'),
-      status: 'refusee',
-      nbLikes: 0
-    },
-    {
-      id: 3,
-      title: 'Créer un système de récompenses',
-      description: 'Programme de récompenses pour motiver les employés.',
-      category: 'Ressources Humaines',
-      date: new Date('2025-01-25'),
-      status: 'refusee',
-      nbLikes: 0
-    },
-    {
-      id: 4,
-      title: 'Moderniser l’interface utilisateur',
-      description: 'Refonte complète de l’interface utilisateur.',
-      category: 'Technologie',
-      date: new Date('2025-01-30'),
-      status: 'en_attente',
-      nbLikes: 0
-    }
-  ];
+  suggestions: Suggestion[] = [];
 searchTerm: any;
   favorites: Suggestion[] = [];
 searchText: string = '';
 
  likeSuggestion(s: Suggestion) {
-    s.nbLikes++;
-  }
+
+  const updatedSuggestion = {
+    ...s,
+    nbLikes: s.nbLikes + 1
+  };
+
+  this.suggestionService.updateSuggestion(s.id, updatedSuggestion)
+    .subscribe(() => {
+      s.nbLikes++;  
+    });
+}
+deleteSuggestion(id: number) {
+  this.suggestionService.deleteSuggestion(id).subscribe(() => {
+    this.ngOnInit(); 
+  });
+}
 
   addToFavorites(s: Suggestion) {
     if (!this.favorites.includes(s)) {
@@ -65,5 +43,12 @@ searchText: string = '';
       s.category.toLowerCase().includes(this.searchText.toLowerCase())
     );
   }
-  
+    constructor(private suggestionService: SuggestionService) {}
+
+    ngOnInit(): void {
+      this.suggestionService.getSuggestionsList().subscribe(data => {
+        this.suggestions = data;
+      });
+    } 
+
 }
